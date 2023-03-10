@@ -3,7 +3,7 @@ import { Picture } from '@astrojs/image/components';
 
 interface Props {
   imagePosition: 'left' | 'right';
-  imgUrl: string;
+  assetUrl: string;
   title: string;
   content: string;
   url?: string;
@@ -12,15 +12,23 @@ interface Props {
   imgAlt?: string;
   target?: string;
 }
-const { imagePosition, title, content, url, imgUrl, buttonText, imgAlt = '', imgTitle = '', target = '_self' } = Astro.props;
+const { imagePosition, title, content, url, assetUrl, buttonText, imgAlt = '', imgTitle = '', target = '_self' } = Astro.props;
+
+const photoFormats = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'avif', 'tiff', 'bmp', 'ico', 'heic', 'heif'];
+const videoFormats = ['mp4', 'webm', 'ogg', 'mov', 'avi', 'wmv', 'flv', 'mpg', 'mpeg', 'm4v', 'mkv'];
+
+const fileExtension = assetUrl.split('.').pop();
+
+const isPhoto = fileExtension ? photoFormats.includes(fileExtension) : false;
+const isVideo = fileExtension ? videoFormats.includes(fileExtension) : false;
 ---
 
 <div class="sm:grid sm:grid-cols-2 sm:grid-flow-dense">
   <div class={`${imagePosition === 'right' ? 'order-2' : ''} aspect-[3/2] w-full h-full `}>
     {
-      imgUrl && (
+      isPhoto && (
         <Picture
-          src={imgUrl}
+          src={assetUrl}
           widths={[680, 800, 1200, 1400, 1800]}
           quality={85}
           sizes="50vw"
@@ -32,6 +40,13 @@ const { imagePosition, title, content, url, imgUrl, buttonText, imgAlt = '', img
           fit="cover"
           background="rgba(0,0,0,0)"
         />
+      )
+    }
+    {
+      isVideo && (
+        <video class="w-full h-full object-center object-cover" autoplay loop muted playsinline>
+          <source src={assetUrl} type={`video/${fileExtension}`} />
+        </video>
       )
     }
   </div>
