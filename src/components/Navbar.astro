@@ -1,0 +1,116 @@
+---
+import Logo from './Logo.astro';
+import Mail from './Mail.astro';
+import Phone from './Phone.astro';
+---
+
+<script is:inline>
+  window.addEventListener('scroll', (event) => {
+    const scroll = this.scrollY;
+    const logo = document.querySelector('#logo');
+    const navItems = document.querySelectorAll('.nav-item');
+    if (scroll > 100) {
+      navItems.forEach((item) => {
+        item.classList.add('py-3');
+      });
+    } else {
+      navItems.forEach((item) => {
+        item.classList.remove('py-3');
+      });
+    }
+    if (scroll > 100) {
+      logo.classList.add('w-24');
+    } else {
+      logo.classList.remove('w-24');
+    }
+  });
+</script>
+
+<header class="fixed top-0 w-full z-30">
+  <div class="bg-primary">
+    <div class="container flex justify-end">
+      <ul class="flex items-center gap-x-12 text-white font-clanMedium">
+        <li class="my-1 group">
+          <a href="" class="group-hover:text-primary transition-colors duration-300 info-item flex items-center gap-x-2"
+            ><Phone fill="group-hover:fill-primary fill-white transition-all duration-300" /> Anrufen</a
+          >
+        </li>
+        <li class="my-1 group">
+          <a href="" class="group-hover:text-primary transition-colors duration-300 info-item flex items-center gap-x-2"
+            ><Mail fill="group-hover:fill-primary fill-white transition-all duration-300" /> Jetzt anfragen</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+  <nav class="filter bg-white/60 backdrop-blur">
+    <div class="container flex items-center justify-between">
+      <a href="/" id="logo" class="transition-all duration-300 w-32"><Logo /></a>
+      <ul class="flex items-center gap-x-10 navigation">
+        <li><a href="/#portfolio" class="py-8 inline-block nav-item transition-all duration-300 hover:font-clanMedium">Portfolio</a></li>
+        <li><a href="/#kunden" class="py-8 inline-block nav-item transition-all duration-300 hover:font-clanMedium">Kunden</a></li>
+        <li><a href="/#über-mich" class="py-8 inline-block nav-item transition-all duration-300 hover:font-clanMedium">Über mich</a></li>
+        <li><a href="/#kontakt" class="py-8 inline-block nav-item transition-all duration-300 hover:font-clanMedium">Kontakt</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .w-24 {
+    width: 6rem !important;
+  }
+  .py-3 {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+  .nav-item {
+    position: relative;
+  }
+  .nav-item::after {
+    content: '';
+    opacity: 0;
+    width: 0rem;
+    height: 0rem;
+    border-radius: 9999px;
+    background-color: #fa6e68;
+    position: absolute;
+    left: 50%;
+    bottom: 3rem;
+    transform: translateX(-50%);
+    transition: all ease-in-out 0.3s;
+  }
+  .nav-item:hover::after {
+    opacity: 1;
+    width: 0.45rem;
+    height: 0.45rem;
+    bottom: 1.2rem;
+    transition: all ease-in-out 0.3s;
+  }
+  .py-3::after {
+    bottom: 2rem;
+  }
+  .py-3:hover::after {
+    bottom: 0.2rem;
+  }
+  .info-item {
+    position: relative;
+    isolation: isolate;
+  }
+  .info-item::after {
+    content: '';
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    inset: 0;
+    border-radius: 8px;
+    background-color: #fff;
+    position: absolute;
+    transition: all ease-in-out 0.3s;
+  }
+  .info-item:hover::after {
+    transform: scale(1.3, 1);
+    transition: all ease-in-out 0.3s;
+  }
+</style>

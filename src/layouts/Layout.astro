@@ -1,0 +1,20 @@
+---
+import Footer from '../components/Footer.astro';
+import Navbar from '../components/Navbar.astro';
+import '../styles/global.css';
+---
+
+<html lang="de" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>DSGN. - media and design</title>
+  </head>
+  <body class="text-default font-clanBook">
+    <Navbar />
+    <slot />
+    <Footer />
+  </body>
+</html>

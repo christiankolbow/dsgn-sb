@@ -1,0 +1,30 @@
+---
+import { Picture } from '@astrojs/image/components';
+
+interface Props {
+  imgUrl: string;
+  title: string;
+}
+const { imgUrl, title } = Astro.props;
+---
+
+<div class="aspect-square hover:bg-footer/50 transition-colors duration-300 relative group">
+  <h3 class="text-center text-white py-12 font-clanMedium text-2xl">{title}</h3>
+  <a
+    href="/portfolio/webdesign/"
+    class="bg-primary text-white px-9 py-2.5 rounded-tr-2xl rounded-bl-2xl font-clanMedium absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden group-hover:inline-block"
+    >Arbeiten ansehen</a
+  >
+  <Picture
+    src={imgUrl}
+    widths={[200, 400, 680, 900, 1200]}
+    quality={50}
+    sizes="25vw"
+    alt=""
+    class="w-full h-full object-center object-cover absolute inset-0 -z-10"
+    aspectRatio={1 / 1}
+    position="center"
+    fit="cover"
+    background="rgba(0,0,0,0)"
+  />
+</div>

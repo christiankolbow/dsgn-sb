@@ -1,0 +1,26 @@
+---
+import Tile from './Tile.astro';
+import web from '../assets/images/Kachel_Webdesign.png';
+import print from '../assets/images/Kachel_Print.png';
+import illustration from '../assets/images/Kachel_Illustration.png';
+import social from '../assets/images/Kachel_Social-Media.png';
+import fotografie from '../assets/images/Kachel_Fotografie.png';
+import video from '../assets/images/Kachel_Video.png';
+import spezial from '../assets/images/Kachel_Spezial.png';
+import konzeption from '../assets/images/Kachel_Konzeption.png';
+---
+
+<section id="portfolio">
+  <h2 class="text-5xl text-primary mb-2 font-clanMedium text-center">Portfolio</h2>
+  <p class="text-xl text-primary mb-16 text-center">Ein Auszug bisheriger Arbeiten.</p>
+  <div class="grid grid-cols-4">
+    <Tile imgUrl={web.src} title="Webdesign" />
+    <Tile imgUrl={print.src} title="Print" />
+    <Tile imgUrl={illustration.src} title="Illustration" />
+    <Tile imgUrl={social.src} title="Social Media" />
+    <Tile imgUrl={fotografie.src} title="Fotografie" />
+    <Tile imgUrl={video.src} title="Video" />
+    <Tile imgUrl={spezial.src} title="Spezial" />
+    <Tile imgUrl={konzeption.src} title="Konzeption" />
+  </div>
+</section>

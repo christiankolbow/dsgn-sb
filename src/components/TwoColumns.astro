@@ -1,0 +1,49 @@
+---
+import { Picture } from '@astrojs/image/components';
+
+interface Props {
+  imagePosition: 'left' | 'right';
+  imgUrl: string;
+  title: string;
+  content: string;
+  url?: string;
+  buttonText?: string;
+  imgTitle?: string;
+  imgAlt?: string;
+  target?: string;
+}
+const { imagePosition, title, content, url, imgUrl, buttonText, imgAlt = '', imgTitle = '', target = '_self' } = Astro.props;
+---
+
+<div class="sm:grid sm:grid-cols-2 sm:grid-flow-dense">
+  <div class={`${imagePosition === 'right' ? 'order-2' : ''} aspect-[3/2] w-full h-full `}>
+    {
+      imgUrl && (
+        <Picture
+          src={imgUrl}
+          widths={[680, 800, 1200, 1400, 1800]}
+          quality={85}
+          sizes="50vw"
+          alt={imgAlt}
+          title={imgTitle}
+          class="w-full h-full object-center object-cover"
+          aspectRatio={3 / 2}
+          position="center"
+          fit="cover"
+          background="rgba(0,0,0,0)"
+        />
+      )
+    }
+  </div>
+  <div class="px-4 py-12 sm:px-36 flex flex-col justify-center">
+    <h2 class="font-clanMedium text-3xl text-primary mb-7">{title}</h2>
+    <div class="text-primary mb-8" set:html={content} />
+    {
+      buttonText && url && (
+        <a href={url} target={target} class="btn-primary">
+          {buttonText}
+        </a>
+      )
+    }
+  </div>
+</div>

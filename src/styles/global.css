@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Clan-Medium';
+    src: url('/assets/fonts/clan-med-webfont.woff') format('woff');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Clan-Book';
+    src: url('/assets/fonts/clan-book-webfont.woff') format('woff');
+    font-display: swap;
+  }
+}
+@layer components {
+  .btn-primary {
+    @apply bg-primary-light hover:bg-primary focus-within:bg-primary text-white px-9 py-2.5 rounded-tr-2xl rounded-bl-2xl font-clanMedium inline-block w-fit;
+  }
+}
+
+#portfolio:target,
+#kunden:target,
+#über-mich:target,
+#kontakt:target {
+  scroll-margin-top: 80px;
+}

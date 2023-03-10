@@ -1,0 +1,23 @@
+---
+import { storyblokEditable, renderRichText } from '@storyblok/astro';
+import TwoColumns from '../components/TwoColumns.astro';
+import dbImmo from '../assets/images/Webdesign_Daniela-Bonn-Immobilien.png';
+
+const { blok } = Astro.props;
+const renderedDescription = renderRichText(blok.description);
+console.log('blok', blok);
+---
+
+<Fragment {...storyblokEditable(blok)}>
+  <TwoColumns
+    imagePosition={blok.imageAlignment}
+    title={blok.title}
+    content={renderedDescription}
+    url={blok.actionButtonUrl.url}
+    target={blok.actionButtonUrl.target}
+    buttonText={blok.actionButtonText}
+    imgUrl={blok.portfolioAsset?.filename}
+    imgAlt={blok.portfolioAsset?.alt}
+    imgTitle={blok.portfolioAsset?.title}
+  />
+</Fragment>

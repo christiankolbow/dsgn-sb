@@ -1,0 +1,46 @@
+<section class="py-32 bg-light" id="kontakt">
+  <div class="container">
+    <h2 class="text-5xl text-primary mb-2 font-clanMedium text-center">Kontakt</h2>
+    <p class="text-xl text-primary mb-16 text-center">Ich freue mich auf deine Anfrage.</p>
+    <form class="max-w-md mx-auto flex flex-col gap-y-8 [&>*]:placeholder:text-form">
+      <input
+        type="text"
+        id="Name"
+        placeholder="Name"
+        class="w-full form-input rounded-bl-lg rounded-tr-lg bg-transparent border-primary"
+        required
+      />
+      <input
+        type="text"
+        id="Email"
+        placeholder="Email Adresse"
+        class="w-full form-input rounded-bl-lg rounded-tr-lg bg-transparent border-primary"
+        required
+      />
+      <input
+        type="text"
+        id="Betreff"
+        placeholder="Betreff"
+        class="w-full form-input rounded-bl-lg rounded-tr-lg bg-transparent border-primary"
+      />
+      <textarea
+        name="Nachricht"
+        id="Nachricht"
+        cols="30"
+        rows="10"
+        class="w-full form-input rounded-bl-lg rounded-tr-lg bg-transparent border-primary"
+        placeholder="Deine Nachricht"
+        required></textarea>
+      <div class="flex items-center gap-x-4">
+        <input
+          type="checkbox"
+          name="Datenschutz"
+          id="Datenschutz"
+          class="form-checkbox scale-150 rounded-bl rounded-tr border-primary color-red-200"
+        />
+        <label for="Datenschutz" class="underline">Datenschutz akzeptieren</label>
+      </div>
+      <button type="submit" class="btn-primary !px-16">Senden</button>
+    </form>
+  </div>
+</section>
