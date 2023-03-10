@@ -22,10 +22,10 @@ export default defineConfig({
     }),
     image(),
   ],
-  vite: {
+  /*   vite: {
     plugins: [basicSsl()],
     server: {
       https: true,
     },
-  },
+  }, */
 });
