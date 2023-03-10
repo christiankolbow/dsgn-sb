@@ -1,14 +1,6 @@
 ---
 import { storyblokEditable } from '@storyblok/astro';
 import Tile from '../components/Tile.astro';
-import web from '../assets/images/Kachel_Webdesign.png';
-import print from '../assets/images/Kachel_Print.png';
-import illustration from '../assets/images/Kachel_Illustration.png';
-import social from '../assets/images/Kachel_Social-Media.png';
-import fotografie from '../assets/images/Kachel_Fotografie.png';
-import video from '../assets/images/Kachel_Video.png';
-import spezial from '../assets/images/Kachel_Spezial.png';
-import konzeption from '../assets/images/Kachel_Konzeption.png';
 
 const { blok } = Astro.props;
 ---
@@ -18,14 +10,11 @@ const { blok } = Astro.props;
     <h2 class="text-5xl text-primary mb-2 font-clanMedium text-center">{blok.title}</h2>
     <p class="text-xl text-primary mb-16 text-center">{blok.subtitle}</p>
     <div class="grid grid-cols-4">
-      <Tile imgUrl={web.src} title="Webdesign" url="/portfolio/webdesign/" />
-      <Tile imgUrl={print.src} title="Print" url="/portfolio/print/" />
-      <Tile imgUrl={illustration.src} title="Illustration" url="/portfolio/illustration/" />
-      <Tile imgUrl={social.src} title="Social Media" url="/portfolio/social-media/" />
-      <Tile imgUrl={fotografie.src} title="Fotografie" url="/portfolio/fotografie/" />
-      <Tile imgUrl={video.src} title="Video" url="/portfolio/video/" />
-      <Tile imgUrl={spezial.src} title="Spezial" url="/portfolio/spezial/" />
-      <Tile imgUrl={konzeption.src} title="Konzeption" url="/portfolio/konzeption/" />
+      {
+        blok.tileImage.map((tile) => (
+          <Tile imgUrl={tile.image.filename} title={tile.title} url={`/portfolio/${tile.title.toLower().replace(' ', '-')}/`} />
+        ))
+      }
     </div>
   </section>
 </Fragment>
