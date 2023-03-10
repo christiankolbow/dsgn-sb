@@ -12,7 +12,7 @@ const { blok } = Astro.props;
     <div class="grid grid-cols-4">
       {
         blok.tileImage.map((tile) => (
-          <Tile imgUrl={tile.image.filename} title={tile.title} url={`/portfolio/${tile.title.toLower().replace(' ', '-')}/`} />
+          <Tile imgUrl={tile.filename} title={tile.title} url={`/portfolio/${tile.title?.toLowerCase()?.replace(' ', '-')}/`} />
         ))
       }
     </div>
