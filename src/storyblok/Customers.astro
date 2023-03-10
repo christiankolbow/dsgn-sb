@@ -1,6 +1,8 @@
 ---
+import { Picture } from '@astrojs/image/components';
 import { storyblokEditable } from '@storyblok/astro';
 const { blok } = Astro.props;
+console.log(blok);
 ---
 
 <Fragment {...storyblokEditable(blok)}>
@@ -8,31 +10,25 @@ const { blok } = Astro.props;
     <div class="container">
       <h2 class="text-5xl text-primary mb-2 font-clanMedium text-center">{blok.title}</h2>
       <p class="text-xl text-primary mb-16 text-center">{blok.subtitle}</p>
-      <div class="grid grid-cols-4 mb-12">
-        <div class="flex items-center justify-center font-clanMedium text-2xl py-12">
-          <span class="bg-gray-400 text-white py-2 px-7 rounded-full">LOGO</span>
-        </div>
-        <div class="flex items-center justify-center font-clanMedium text-2xl py-12">
-          <span class="bg-gray-400 text-white py-2 px-7 rounded-full">LOGO</span>
-        </div>
-        <div class="flex items-center justify-center font-clanMedium text-2xl py-12">
-          <span class="bg-gray-400 text-white py-2 px-7 rounded-full">LOGO</span>
-        </div>
-        <div class="flex items-center justify-center font-clanMedium text-2xl py-12">
-          <span class="bg-gray-400 text-white py-2 px-7 rounded-full">LOGO</span>
-        </div>
-        <div class="flex items-center justify-center font-clanMedium text-2xl py-12">
-          <span class="bg-gray-400 text-white py-2 px-7 rounded-full">LOGO</span>
-        </div>
-        <div class="flex items-center justify-center font-clanMedium text-2xl py-12">
-          <span class="bg-gray-400 text-white py-2 px-7 rounded-full">LOGO</span>
-        </div>
-        <div class="flex items-center justify-center font-clanMedium text-2xl py-12">
-          <span class="bg-gray-400 text-white py-2 px-7 rounded-full">LOGO</span>
-        </div>
-        <div class="flex items-center justify-center font-clanMedium text-2xl py-12">
-          <span class="bg-gray-400 text-white py-2 px-7 rounded-full">LOGO</span>
-        </div>
+      <div class="grid grid-cols-4 gap-10 mb-12">
+        {
+          blok.logos.map((logo) => (
+            <div class="flex items-center justify-center ">
+              <Picture
+                src={logo.filename}
+                widths={[140, 280, 620]}
+                quality={50}
+                sizes="150px"
+                alt=""
+                class="w-full h-full object-center object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                aspectRatio={3 / 2}
+                position="center"
+                fit="contain"
+                background="rgba(0,0,0,0)"
+              />
+            </div>
+          ))
+        }
       </div>
       <p class="text-center text-xl">{blok.bottomText}</p>
     </div>
