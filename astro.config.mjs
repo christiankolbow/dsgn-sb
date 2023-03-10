@@ -20,9 +20,7 @@ export default defineConfig({
         applyBaseStyles: false,
       },
     }),
-    image({
-      serviceEntryPoint: '@astrojs/image/sharp',
-    }),
+    image(),
   ],
   vite: {
     plugins: [basicSsl()],
