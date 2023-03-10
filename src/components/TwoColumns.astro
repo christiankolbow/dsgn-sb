@@ -23,7 +23,7 @@ const isPhoto = fileExtension ? photoFormats.includes(fileExtension) : false;
 const isVideo = fileExtension ? videoFormats.includes(fileExtension) : false;
 ---
 
-<div class="sm:grid sm:grid-cols-2 sm:grid-flow-dense">
+<div class="sm:grid sm:grid-cols-2 sm:grid-flow-dense bg-light">
   <div class={`${imagePosition === 'right' ? 'order-2' : ''} aspect-[3/2] w-full h-full `}>
     {
       isPhoto && (
@@ -52,7 +52,7 @@ const isVideo = fileExtension ? videoFormats.includes(fileExtension) : false;
   </div>
   <div class="px-4 py-12 sm:px-36 flex flex-col justify-center">
     <h2 class="font-clanMedium text-3xl text-primary mb-7">{title}</h2>
-    <div class="text-primary mb-8" set:html={content} />
+    <div class="text-primary mb-8 [&>p>a]:underline [&>p>a]:font-clanMedium" set:html={content} />
     {
       buttonText && url && (
         <a href={url} target={target} class="btn-primary">
