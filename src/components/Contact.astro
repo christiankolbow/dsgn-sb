@@ -2,7 +2,13 @@
   <div class="container">
     <h2 class="text-5xl text-primary mb-2 font-clanMedium text-center">Kontakt</h2>
     <p class="text-xl text-primary mb-16 text-center">Ich freue mich auf deine Anfrage.</p>
-    <form class="max-w-md mx-auto flex flex-col gap-y-8 [&>*]:placeholder:text-form">
+    <form
+      class="max-w-md mx-auto flex flex-col gap-y-8 [&>*]:placeholder:text-form"
+      action="/success/"
+      name="Kontakt"
+      method="POST"
+      data-netlify="true">
+      <input type="hidden" name="form-name" value="Kontakt" />
       <input
         type="text"
         id="Name"
