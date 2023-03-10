@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import image from '@astrojs/image';
 import storyblok from '@storyblok/astro';
-import basicSsl from '@vitejs/plugin-basic-ssl';
+// import basicSsl from '@vitejs/plugin-basic-ssl';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,8 +11,12 @@ export default defineConfig({
       accessToken: import.meta.env.VITE_STORYBLOK_TOKEN,
       components: {
         page: 'storyblok/Page',
-        header: 'storyblok/Header',
+        portfolioHeader: 'storyblok/PortfolioHeader',
         checkeredRows: 'storyblok/CheckeredRows',
+        homeHeader: 'storyblok/HomeHeader',
+        portfolioTiles: 'storyblok/PortfolioTiles',
+        customers: 'storyblok/Customers',
+        about: 'storyblok/About',
       },
     }),
     tailwind({
