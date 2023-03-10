@@ -1,0 +1,63 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+const { blok } = Astro.props;
+---
+
+<Fragment {...storyblokEditable(blok)}>
+  <section class="py-32 bg-light" id="kontakt">
+    <div class="container">
+      <h2 class="text-5xl text-primary mb-2 font-clanMedium text-center">{blok.title}</h2>
+      <p class="text-xl text-primary mb-16 text-center">{blok.subtitle}</p>
+      <form
+        class="max-w-md mx-auto flex flex-col gap-y-8 [&>*]:placeholder:text-form"
+        action="/success/"
+        name="Kontakt"
+        method="POST"
+        data-netlify="true">
+        <input type="hidden" name="form-name" value="Kontakt" />
+        <input
+          type="text"
+          id="Name"
+          name="Name"
+          placeholder="Name"
+          class="w-full form-input rounded-bl-lg rounded-tr-lg bg-transparent border-primary"
+          required
+        />
+        <input
+          type="text"
+          id="Email"
+          name="Email"
+          placeholder="Email Adresse"
+          class="w-full form-input rounded-bl-lg rounded-tr-lg bg-transparent border-primary"
+          required
+        />
+        <input
+          type="text"
+          id="Betreff"
+          name="subject"
+          placeholder="Betreff"
+          class="w-full form-input rounded-bl-lg rounded-tr-lg bg-transparent border-primary"
+        />
+        <textarea
+          name="Nachricht"
+          id="Nachricht"
+          cols="30"
+          rows="10"
+          class="w-full form-input rounded-bl-lg rounded-tr-lg bg-transparent border-primary"
+          placeholder="Deine Nachricht"
+          required></textarea>
+        <div class="flex items-center gap-x-4">
+          <input
+            type="checkbox"
+            name="Datenschutzerklärung"
+            id="Datenschutz"
+            value="Der Datenschutzerklärung wurde zugestimmt."
+            class="form-checkbox scale-150 rounded-bl rounded-tr border-primary color-red-200"
+          />
+          <label for="Datenschutz" class="underline">Datenschutz akzeptieren</label>
+        </div>
+        <button type="submit" class="btn-primary !px-16">Senden</button>
+      </form>
+    </div>
+  </section>
+</Fragment>

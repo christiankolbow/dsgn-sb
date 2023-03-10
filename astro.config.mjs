@@ -16,7 +16,8 @@ export default defineConfig({
         homeHeader: 'storyblok/HomeHeader',
         portfolioTiles: 'storyblok/PortfolioTiles',
         customers: 'storyblok/Customers',
-        about: 'storyblok/About',
+        aboutMe: 'storyblok/AboutMe',
+        contact: 'storyblok/Contact',
       },
     }),
     tailwind({

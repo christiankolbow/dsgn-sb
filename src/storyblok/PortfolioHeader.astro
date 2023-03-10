@@ -7,7 +7,7 @@ const { blok } = Astro.props;
 const renderedDescription = renderRichText(blok.description);
 ---
 
-<div {...storyblokEditable(blok)}>
+<Fragment {...storyblokEditable(blok)}>
   <section class="pb-72 pt-56 relative">
     <div class="container relative z-10">
       <h1 class="text-5xl text-primary mb-2 font-clanMedium">{blok.title}</h1>
@@ -35,4 +35,4 @@ const renderedDescription = renderRichText(blok.description);
       }
     </div>
   </section>
-</div>
+</Fragment>
