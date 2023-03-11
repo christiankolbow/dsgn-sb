@@ -1,8 +1,6 @@
 ---
-import { Picture } from '@astrojs/image/components';
 import { storyblokEditable, renderRichText } from '@storyblok/astro';
-import mockup from '../assets/images/med-tech-mockup.png';
-import Slider from '../components/Slider';
+import Swiper from '../components/Swiper.astro';
 
 const { blok } = Astro.props;
 const renderedDescription = renderRichText(blok.description);
@@ -12,7 +10,7 @@ const renderedDescription = renderRichText(blok.description);
   <section class="pt-64 pb-52">
     <div class="container flex flex-col-reverse md:items-center md:flex-row gap-12">
       <div class="w-7/12">
-        <Slider images={blok.sliderImages} client:idle />
+        <Swiper client:idle images={blok.sliderImages} />
       </div>
       <div class="w-5/12">
         <h1 class="text-5xl text-primary mb-2 font-clanMedium">{blok.title}</h1>

@@ -3,7 +3,6 @@ import { Picture } from '@astrojs/image/components';
 import { storyblokEditable, renderRichText } from '@storyblok/astro';
 const { blok } = Astro.props;
 const renderedDescription = renderRichText(blok.description);
-console.log(blok);
 ---
 
 <Fragment {...storyblokEditable(blok)}>

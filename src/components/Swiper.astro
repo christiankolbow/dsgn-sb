@@ -1,0 +1,50 @@
+---
+import { Picture } from '@astrojs/image/components';
+
+interface Props {
+  images: string[];
+}
+const { images } = Astro.props;
+---
+
+<div class="swiper min-h-max">
+  <div class="swiper-wrapper">
+    ´ {
+      images?.map((image: any, i: number) => (
+        <div class="swiper-slide !h-auto">
+          <Picture
+            src={image.filename}
+            widths={[480, 680, 800, 1200, 1400]}
+            quality={85}
+            sizes="50vw"
+            alt={image.alt || ''}
+            title={image.title || ''}
+            class="h-full w-full object-contain object-center"
+            aspectRatio={3 / 2}
+            position="center"
+            fit="contain"
+            background="rgba(0,0,0,0)"
+          />
+          <div class="swiper-lazy-preloader" />
+        </div>
+      ))
+    }
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+<script is:inline type="module">
+  import { Swiper } from './../../node_modules/swiper/swiper-bundle.esm.js';
+  import './../../node_modules/swiper/swiper-bundle.min.css';
+
+  const swiper = new Swiper('.swiper', {
+    direction: 'horizontal',
+    loop: false,
+    slidesPerView: 1,
+    spaceBetween: 40,
+
+    pagination: {
+      clickable: true,
+      el: '.swiper-pagination',
+    },
+  });
+</script>
