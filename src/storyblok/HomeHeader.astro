@@ -10,7 +10,7 @@ const renderedDescription = renderRichText(blok.description);
   <section class="pt-64 pb-52">
     <div class="container flex flex-col-reverse md:items-center md:flex-row gap-12">
       <div class="w-7/12">
-        <Swiper client:idle images={blok.sliderImages} />
+        <Swiper images={blok.sliderImages} />
       </div>
       <div class="w-5/12">
         <h1 class="text-5xl text-primary mb-2 font-clanMedium">{blok.title}</h1>
