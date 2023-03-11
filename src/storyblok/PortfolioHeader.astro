@@ -27,7 +27,7 @@ const renderedDescription = renderRichText(blok.description);
             title={blok.backgroundImage?.title}
             class="object-left object-cover h-full w-full"
             aspectRatio={3 / 2}
-            position="left"
+            position={blok.backgroundImagePosition || 'left'}
             fit="cover"
             background="#ffffff"
           />
