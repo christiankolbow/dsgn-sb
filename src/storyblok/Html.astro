@@ -1,0 +1,7 @@
+---
+import { storyblokEditable, renderRichText } from '@storyblok/astro';
+const { blok } = Astro.props;
+console.log(blok);
+---
+
+<Fragment {...storyblokEditable(blok)}></Fragment>
