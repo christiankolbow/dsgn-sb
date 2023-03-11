@@ -8,10 +8,10 @@ const { blok } = Astro.props;
   <section class="py-32 bg-light" id="kunden">
     <div class="container">
       <h2 class="text-5xl text-primary mb-2 font-clanMedium text-center">{blok.title}</h2>
-      <p class="text-xl text-primary mb-16 text-center">{blok.subtitle}</p>
+      {blok.subtitle && <p class="text-xl text-primary mb-16 text-center">{blok.subtitle}</p>}
       <div class="grid grid-cols-4 gap-10 mb-12">
         {
-          blok.logos.map((logo) => (
+          blok.logos?.map((logo) => (
             <div class="flex items-center justify-center ">
               <Picture
                 src={logo.filename}
@@ -29,7 +29,7 @@ const { blok } = Astro.props;
           ))
         }
       </div>
-      <p class="text-center text-xl">{blok.bottomText}</p>
+      {blok.bottomText && <p class="text-center text-xl">{blok.bottomText}</p>}
     </div>
   </section>
 </Fragment>

@@ -11,13 +11,19 @@ const renderedDescription = renderRichText(blok.description);
   <section class="pb-72 pt-56 relative">
     <div class="container relative z-10">
       <h1 class="text-5xl text-primary mb-2 font-clanMedium">{blok.title}</h1>
-      <h2 class="text-2xl text-primary mb-10">{blok.subtitle}</h2>
+      {blok.subtitle && <h2 class="text-2xl text-primary mb-10">{blok.subtitle}</h2>}
       <div class="text-primary mb-10 max-w-lg" set:html={renderedDescription} />
-      <a href={blok.actionButtonUrl.url} class="btn-primary" target={blok.actionButtonUrl.target}>{blok.actionButtonText}</a>
-    </div>
-    <div class="absolute inset-0 z-0">
       {
-        blok.backgroundImage?.filename && (
+        blok.actionButtonUrl.url && blok.actionButtonText && (
+          <a href={blok.actionButtonUrl.url} class="btn-primary" target={blok.actionButtonUrl.target}>
+            {blok.actionButtonText}
+          </a>
+        )
+      }
+    </div>
+    {
+      blok.backgroundImage?.filename && (
+        <div class="absolute inset-0 z-0">
           <Picture
             src={blok.backgroundImage?.filename}
             widths={[680, 900, 1200, 1400, 1800, 2400]}
@@ -31,8 +37,8 @@ const renderedDescription = renderRichText(blok.description);
             fit="cover"
             background="#ffffff"
           />
-        )
-      }
-    </div>
+        </div>
+      )
+    }
   </section>
 </Fragment>

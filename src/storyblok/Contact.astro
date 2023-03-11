@@ -7,7 +7,7 @@ const { blok } = Astro.props;
   <section class="py-32 bg-light" id="kontakt">
     <div class="container">
       <h2 class="text-5xl text-primary mb-2 font-clanMedium text-center">{blok.title}</h2>
-      <p class="text-xl text-primary mb-16 text-center">{blok.subtitle}</p>
+      {blok.subtitle && <p class="text-xl text-primary mb-16 text-center">{blok.subtitle}</p>}
       <form
         class="max-w-md mx-auto flex flex-col gap-y-8 [&>*]:placeholder:text-form"
         action="/success/"
