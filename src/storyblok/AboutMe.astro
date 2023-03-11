@@ -1,7 +1,9 @@
 ---
+import { Picture } from '@astrojs/image/components';
 import { storyblokEditable, renderRichText } from '@storyblok/astro';
 const { blok } = Astro.props;
 const renderedDescription = renderRichText(blok.description);
+console.log(blok);
 ---
 
 <Fragment {...storyblokEditable(blok)}>
@@ -9,10 +11,34 @@ const renderedDescription = renderRichText(blok.description);
     <div class="container">
       <h2 class="text-5xl text-primary mb-2 font-clanMedium text-center">{blok.title}</h2>
       <p class="text-xl text-primary mb-16 text-center">{blok.subtitle}</p>
-      <div class="flex flex-col sm:flex-row gap-x-40">
-        <div class="bg-gray-400 rounded-full aspect-square max-h-[480px] w-[480px] max-w-full"></div>
+      <div class="flex flex-col sm:flex-row gap-x-40 items-end">
+        <Picture
+          src={blok.profileImage.filename}
+          widths={[680, 800, 1200, 1400, 1800]}
+          quality={85}
+          sizes="50vw"
+          class="rounded-full aspect-square max-h-[480px] w-[480px] max-w-full"
+          alt="Hi! Ich bin Sarah. Freiberufliche Mediendesignerin."
+          title="Hi! Ich bin Sarah. Freiberufliche Mediendesignerin."
+          aspectRatio={1 / 1}
+          position="center"
+          fit="cover"
+          background="rgba(0,0,0,0)"
+        />
         <div class="flex flex-col max-w-md">
-          <h2 class="text-9xl text-primary">HI</h2>
+          <Picture
+            src={blok.welcomeImage.filename}
+            widths={[680, 800, 1200, 1400, 1800]}
+            quality={85}
+            class="-translate-x-40"
+            sizes="50vw"
+            alt="Hi! Ich bin Sarah. Freiberufliche Mediendesignerin."
+            title="Hi! Ich bin Sarah. Freiberufliche Mediendesignerin."
+            aspectRatio={3 / 2}
+            position="center"
+            fit="contain"
+            background="rgba(0,0,0,0)"
+          />
           <div class="text-primary mb-4 [&>p]:mb-4 [&>p>b]:font-clanMedium" set:html={renderedDescription} />
         </div>
       </div>

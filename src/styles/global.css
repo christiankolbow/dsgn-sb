@@ -27,3 +27,13 @@
 #kontakt:target {
   scroll-margin-top: 80px;
 }
+
+.swiper-wrapper {
+  @apply mb-10;
+}
+.swiper-pagination-bullets {
+  @apply !scale-150;
+}
+.swiper-pagination-bullet {
+  @apply !bg-primary;
+}

@@ -4,6 +4,10 @@ import image from '@astrojs/image';
 import storyblok from '@storyblok/astro';
 // import basicSsl from '@vitejs/plugin-basic-ssl';
 
+import preact from '@astrojs/preact';
+
+import react from '@astrojs/react';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -29,6 +33,7 @@ export default defineConfig({
     image({
       serviceEntryPoint: '@astrojs/image/sharp',
     }),
+    react(),
   ],
   /*   vite: {
     plugins: [basicSsl()],
