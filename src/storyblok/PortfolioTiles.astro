@@ -9,7 +9,7 @@ const { blok } = Astro.props;
   <section id="portfolio">
     <h2 class="text-5xl text-primary mb-2 font-clanMedium text-center">{blok.title}</h2>
     <p class="text-xl text-primary mb-16 text-center">{blok.subtitle}</p>
-    <div class="grid grid-cols-4">
+    <div class="grid grid-cols-2 md:grid-cols-4">
       <Tile imgUrl={blok.webdesignImg.filename} title="Webdesign" url="/portfolio/webdesign/" />
       <Tile imgUrl={blok.printImg.filename} title="Print" url="/portfolio/print/" />
       <Tile imgUrl={blok.illustrationImg.filename} title="Illustration" url="/portfolio/illustration/" />

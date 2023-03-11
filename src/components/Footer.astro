@@ -4,10 +4,10 @@ import Logo from './Logo.astro';
 
 <footer class="overflow-hidden">
   <div class="bg-primary">
-    <div class="container flex justify-between items-center bg-primary text-white py-4">
-      <div class="flex items-center gap-x-20">
+    <div class="container flex flex-col sm:flex-row justify-between items-start sm:items-center bg-primary text-white py-4">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-y-2 gap-x-12 xl:gap-x-20">
         <Logo fill="fill-white" />
-        <ul class="flex items-center gap-x-20">
+        <ul class="flex flex-col lg:flex-row items-start lg:items-center gap-y-2 gap-x-20">
           <li class="flex flex-col">
             <span>Media DSGN</span>
             <span>Sarah Weihrauch</span>
@@ -30,9 +30,9 @@ import Logo from './Logo.astro';
     </div>
   </div>
   <div class="bg-footer text-white">
-    <div class="container flex items-center justify-between">
+    <div class="container flex flex-col gap-y-2 sm:flex-row items-start sm:items-center justify-between">
       <span>Copyright &copy; 2023 Sarah Weihrauch</span>
-      <ul class="flex items-center justify-center gap-x-12">
+      <ul class="flex items-center justify-center gap-x-4 sm:gap-x-12">
         <li><a href="/agb/" class="py-2 inline-block">AGB</a></li>
         <li><a href="/impressum/" class="py-2 inline-block">Impressum</a></li>
         <li><a href="/datenschutz/" class="py-2 inline-block">Datenschutz</a></li>
