@@ -1,0 +1,8 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+const { blok } = Astro.props;
+---
+
+<Fragment {...storyblokEditable(blok)}>
+  <div set:html={blok.markdown} />
+</Fragment>

@@ -18,7 +18,7 @@ export default defineConfig({
         customers: 'storyblok/Customers',
         aboutMe: 'storyblok/AboutMe',
         contact: 'storyblok/Contact',
-        html: 'storyblok/Html',
+        markdown: 'storyblok/Markdown',
       },
     }),
     tailwind({

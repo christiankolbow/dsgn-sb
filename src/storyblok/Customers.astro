@@ -2,7 +2,6 @@
 import { Picture } from '@astrojs/image/components';
 import { storyblokEditable } from '@storyblok/astro';
 const { blok } = Astro.props;
-console.log(blok);
 ---
 
 <Fragment {...storyblokEditable(blok)}>

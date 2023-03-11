@@ -5,7 +5,6 @@ import dbImmo from '../assets/images/Webdesign_Daniela-Bonn-Immobilien.png';
 
 const { blok } = Astro.props;
 const renderedDescription = renderRichText(blok.description);
-console.log('blok', blok);
 ---
 
 <Fragment {...storyblokEditable(blok)}>
