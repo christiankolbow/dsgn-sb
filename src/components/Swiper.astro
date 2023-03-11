@@ -8,10 +8,10 @@ import { Picture } from '@astrojs/image/components';
   </div>
   <div class="swiper-pagination"></div>
 </div>
-<script is:inline type="module">
-  import { Swiper } from './../../node_modules/swiper/swiper-bundle.esm.js';
-  import './../../node_modules/swiper/swiper-bundle.min.css';
+<link rel="stylesheet" href="/assets/css/swiper-bundle.min.css" />
 
+<script src="/assets/js/swiper-bundle.min.js" is:inline></script>
+<script is:inline>
   const swiper = new Swiper('.swiper', {
     direction: 'horizontal',
     loop: false,
