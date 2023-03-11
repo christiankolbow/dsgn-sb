@@ -1,11 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import { useStoryblokApi } from '@storyblok/astro';
+
+const sbApi = useStoryblokApi();
+const { data } = await sbApi.get('cdn/stories/agb', {
+  version: 'draft',
+});
+
+const story = data.story;
 ---
 
 <Layout>
   <main class="pb-28 pt-44">
     <div class="container prose prose-rose max-w-4xl [&>*]:text-default">
-      <h1>AGB</h1>
+      <StoryblokComponent blok={story.content} />
     </div>
   </main>
 </Layout>

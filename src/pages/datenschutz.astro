@@ -1,10 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import { useStoryblokApi } from '@storyblok/astro';
+
+const sbApi = useStoryblokApi();
+const { data } = await sbApi.get('cdn/stories/datenschutz', {
+  version: 'draft',
+});
+
+const story = data.story;
 ---
 
 <Layout>
   <main class="pb-28 pt-44">
     <div class="container prose prose-rose max-w-4xl [&>*]:text-default">
+      <StoryblokComponent blok={story.content} />
+
       <h1>Datenschutz&shy;erkl&auml;rung</h1>
       <h2>1. Datenschutz auf einen Blick</h2>
       <h3>Allgemeine Hinweise</h3>

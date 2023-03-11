@@ -10,11 +10,14 @@ const { blok } = Astro.props;
     <h2 class="text-5xl text-primary mb-2 font-clanMedium text-center">{blok.title}</h2>
     <p class="text-xl text-primary mb-16 text-center">{blok.subtitle}</p>
     <div class="grid grid-cols-4">
-      {
-        blok.tileImage.map((tile) => (
-          <Tile imgUrl={tile.filename} title={tile.title} url={`/portfolio/${tile.title?.toLowerCase()?.replace(' ', '-')}/`} />
-        ))
-      }
+      <Tile imgUrl={blok.webdesignImg.filename} title={blok.webdesignImg.title} url="/portfolio/webdesign/" />
+      <Tile imgUrl={blok.printImg.filename} title={blok.printImg.title} url="/portfolio/print/" />
+      <Tile imgUrl={blok.illustrationImg.filename} title={blok.illustrationImg.title} url="/portfolio/illustration/" />
+      <Tile imgUrl={blok.socialMediaImg.filename} title={blok.socialMediaImg.title} url="/portfolio/social-media/" />
+      <Tile imgUrl={blok.fotografieImg.filename} title={blok.fotografieImg.title} url="/portfolio/fotografie/" />
+      <Tile imgUrl={blok.videoImg.filename} title={blok.videoImg.title} url="/portfolio/video/" />
+      <Tile imgUrl={blok.spezialImg.filename} title={blok.spezialImg.title} url="/portfolio/spezial/" />
+      <Tile imgUrl={blok.konzeptionImg.filename} title={blok.konzeptionImg.title} url="/portfolio/konzeption/" />
     </div>
   </section>
 </Fragment>
