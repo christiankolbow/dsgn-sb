@@ -1,6 +1,7 @@
 ---
 import { storyblokEditable, renderRichText } from '@storyblok/astro';
 import Swiper from '../components/Swiper.astro';
+import { Picture } from '@astrojs/image/components';
 import TwoColumns from '../components/TwoColumns.astro';
 
 const { blok } = Astro.props;
@@ -11,7 +12,30 @@ const renderedDescription = renderRichText(blok.description);
   <section class="pt-64 pb-52">
     <div class="container flex flex-col-reverse md:items-center md:flex-row gap-12">
       <div class="w-7/12">
-        <Swiper images={blok.sliderImages} />
+        <Swiper>
+          {
+            blok.sliderImages.map((image) => {
+              return (
+                <div class="swiper-slide !h-auto">
+                  <Picture
+                    src={image.filename}
+                    widths={[480, 680, 800, 1200, 1400]}
+                    quality={85}
+                    sizes="50vw"
+                    alt={image.alt || ''}
+                    title={image.title || ''}
+                    class="h-full w-full object-contain object-center"
+                    aspectRatio={3 / 2}
+                    position="center"
+                    fit="contain"
+                    background="rgba(0,0,0,0)"
+                  />
+                  <div class="swiper-lazy-preloader" />
+                </div>
+              );
+            })
+          }
+        </Swiper>
       </div>
       <div class="w-5/12">
         <h1 class="text-5xl text-primary mb-2 font-clanMedium">{blok.title}</h1>
