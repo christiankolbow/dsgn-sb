@@ -15,7 +15,7 @@ const renderedDescription = renderRichText(blok.description);
       <div class="text-primary mb-10 max-w-lg" set:html={renderedDescription} />
       <a href={blok.actionButtonUrl.url} class="btn-primary" target={blok.actionButtonUrl.target}>{blok.actionButtonText}</a>
     </div>
-    <div class="absolute inset-0 z-0 pl-[20vw]">
+    <div class="absolute inset-0 z-0">
       {
         blok.backgroundImage?.filename && (
           <Picture
