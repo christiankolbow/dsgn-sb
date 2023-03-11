@@ -10,8 +10,12 @@ const { data } = await sbApi.get('cdn/stories/home', {
 });
 
 const story = data.story;
+const profile = 'https://a.storyblok.com/f/204893/1056x1056/5aa001a694/profilbild_sarah_weihrauch.png';
 ---
 
-<Layout>
+<Layout
+  title="DSGN. media and design "
+  image={profile}
+  description="DSGN. Mediendesignerin Sarah Weihrauch - Freiberufliche Mediendesignerin">
   <StoryblokComponent blok={story.content} />
 </Layout>

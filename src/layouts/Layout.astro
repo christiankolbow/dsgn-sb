@@ -2,6 +2,24 @@
 import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
 import '../styles/global.css';
+import { SEOMetadata } from 'astro-seo-metadata';
+interface Props {
+  siteName?: string;
+  title?: string;
+  description?: string;
+  image?: string;
+  author?: string;
+  copyright?: string;
+}
+
+const {
+  siteName = 'DSGN.',
+  title = 'DSGN. - media and design',
+  description = 'Freiberufliche Mediendesignerin',
+  image,
+  author = 'Sarah Weihrauch',
+  copyright = 'Sarah Weihrauch',
+} = Astro.props;
 ---
 
 <html lang="de" class="scroll-smooth">
@@ -9,8 +27,18 @@ import '../styles/global.css';
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>DSGN. - media and design</title>
+    <SEOMetadata
+      siteName={siteName}
+      title={title}
+      description={description}
+      image={image || undefined}
+      author={author}
+      copyright={copyright}
+      astroSitemap={true}
+      canonicalUrl={Astro.url.toString()}
+      type={'website'}
+      astroGenerator={true}
+    />
   </head>
   <body class="text-default font-clanBook min-h-screen flex flex-col">
     <Navbar />

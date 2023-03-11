@@ -9,8 +9,13 @@ const { data } = await sbApi.get('cdn/stories/portfolio/social-media', {
 });
 
 const story = data.story;
+const bgBlok = story.content.body.find((item) => item.component === 'portfolioHeader');
+const seoImg = bgBlok.backgroundImage.filename;
 ---
 
-<Layout>
+<Layout
+  title="DSGN. Social-Media Portfolio"
+  image={seoImg}
+  description="Social-Media Portfolio von Sarah Weihrauch - Freiberufliche Mediendesignerin">
   <StoryblokComponent blok={story.content} />
 </Layout>
