@@ -29,7 +29,7 @@ import Phone from './Phone.astro';
 <header class="fixed top-0 w-full z-30">
   <div class="bg-primary">
     <div class="container flex justify-end">
-      <ul class="flex items-center gap-x-12 text-white font-clanMedium">
+      <ul id="infobar" class="flex items-center gap-x-12 text-white font-clanMedium">
         <li class="my-1 group">
           <a
             href="tel:+491733844379"
@@ -40,7 +40,7 @@ import Phone from './Phone.astro';
         <li class="my-1 group">
           <a
             href="mailto:sarah@media-and-design.com"
-            class="group-hover:text-primary transition-colors duration-300 info-item flex items-center gap-x-2"
+            class="group-hover:text-primary transition-colors duration-300 info-item flex items-center gap-x-2 min-w-max"
             aria-label="Email"><Mail fill="group-hover:fill-primary fill-white transition-all duration-300" /> Jetzt anfragen</a
           >
         </li>
@@ -50,17 +50,56 @@ import Phone from './Phone.astro';
   <nav class="filter bg-white/60 backdrop-blur">
     <div class="container flex items-center justify-between">
       <a href="/" id="logo" class="transition-all duration-300 w-32" aria-label="Startseite"><Logo /></a>
-      <ul class="hidden sm:flex items-center gap-x-10 navigation">
-        <li><a href="/#portfolio" class="py-8 inline-block nav-item transition-all duration-300 hover:font-clanMedium">Portfolio</a></li>
-        <li><a href="/#kunden" class="py-8 inline-block nav-item transition-all duration-300 hover:font-clanMedium">Kunden</a></li>
-        <li><a href="/#über-mich" class="py-8 inline-block nav-item transition-all duration-300 hover:font-clanMedium">Über mich</a></li>
-        <li><a href="/#kontakt" class="py-8 inline-block nav-item transition-all duration-300 hover:font-clanMedium">Kontakt</a></li>
-      </ul>
+      <div id="menu" class="hidden fixed sm:relative sm:block bg-primary/90 sm:bg-transparent h-screen sm:h-auto z-40 inset-0">
+        <ul
+          class="flex flex-col h-full sm:h-auto justify-center sm:justify-start sm:flex-row text-white sm:text-default items-center gap-y-4 sm:gap-x-10 navigation font-clanMedium sm:font-clanBook text-lg sm:text-base">
+          <li><a href="/#portfolio" class="py-8 inline-block nav-item transition-all duration-300 hover:font-clanMedium">Portfolio</a></li>
+          <li><a href="/#kunden" class="py-8 inline-block nav-item transition-all duration-300 hover:font-clanMedium">Kunden</a></li>
+          <li><a href="/#über-mich" class="py-8 inline-block nav-item transition-all duration-300 hover:font-clanMedium">Über mich</a></li>
+          <li><a href="/#kontakt" class="py-8 inline-block nav-item transition-all duration-300 hover:font-clanMedium">Kontakt</a></li>
+        </ul>
+      </div>
+
+      <div
+        id="hamburger"
+        class="cursor-pointer flex sm:hidden flex-col gap-y-1 py-4 relative z-[100] group [&>*]:block [&>*]:w-8 [&>*]:h-1 [&>*]:bg-primary-light [&>*]:rounded-full">
+        <span class="group-hover:bg-primary"></span>
+        <span class="group-hover:bg-primary"></span>
+        <span class="group-hover:bg-primary"></span>
+      </div>
     </div>
   </nav>
 </header>
-
+<script is:inline>
+  const hamburger = document.querySelector('#hamburger');
+  const menu = document.querySelector('#menu');
+  const infobar = document.querySelector('#infobar');
+  hamburger.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+    hamburger.classList.toggle('active');
+  });
+  menu.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+    hamburger.classList.toggle('active');
+  });
+  infobar.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+    hamburger.classList.toggle('active');
+  });
+</script>
 <style>
+  .active span {
+    background-color: #fff !important;
+  }
+  .active span:nth-child(2) {
+    display: none;
+  }
+  .active span:nth-child(1) {
+    transform: rotate(45deg) translate(0.35rem, 0.35rem);
+  }
+  .active span:nth-child(3) {
+    transform: rotate(-45deg) translate(-0.05rem, -0.05rem);
+  }
   .w-24 {
     width: 6rem !important;
   }

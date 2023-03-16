@@ -10,7 +10,27 @@ const renderedDescription = renderRichText(blok.description);
     <div class="container">
       <h2 class="text-5xl text-primary mb-2 font-clanMedium text-center">{blok.title}</h2>
       {blok.subtitle && <p class="text-xl text-primary mb-16 text-center">{blok.subtitle}</p>}
-      <div class="flex flex-col md:flex-row gap-40 items-center md:items-end">
+      <div class="md:flex justify-end max-w-6xl hidden lg:mb-12 xl:max-w-5xl">
+        {
+          blok.welcomeImage?.filename && (
+            <Picture
+              src={blok.welcomeImage.filename}
+              widths={[680, 800, 1200, 1400, 1800]}
+              quality={85}
+              class=" -mb-28 "
+              sizes="680px"
+              alt="Hi! Ich bin Sarah. Freiberufliche Mediendesignerin."
+              title="Hi! Ich bin Sarah. Freiberufliche Mediendesignerin."
+              aspectRatio={3 / 2}
+              position="center"
+              fit="contain"
+              background="rgba(0,0,0,0)"
+            />
+          )
+        }
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-y-16 gap-x-40 md:gap-x-14 lg:gap-x-40 items-center">
         <Picture
           src={blok.profileImage?.filename}
           widths={[680, 800, 1200, 1400, 1800]}
@@ -24,25 +44,27 @@ const renderedDescription = renderRichText(blok.description);
           fit="cover"
           background="rgba(0,0,0,0)"
         />
-        <div class="flex flex-col max-w-md">
-          {
-            blok.welcomeImage?.filename && (
-              <Picture
-                src={blok.welcomeImage.filename}
-                widths={[680, 800, 1200, 1400, 1800]}
-                quality={85}
-                class="-translate-x-40 scale-150"
-                sizes="80vw"
-                alt="Hi! Ich bin Sarah. Freiberufliche Mediendesignerin."
-                title="Hi! Ich bin Sarah. Freiberufliche Mediendesignerin."
-                aspectRatio={3 / 2}
-                position="center"
-                fit="contain"
-                background="rgba(0,0,0,0)"
-              />
-            )
-          }
-          <div class="text-primary mb-4 [&>p]:mb-4 [&>p>b]:font-clanMedium" set:html={renderedDescription} />
+        <div class="flex flex-col">
+          <div class="md:hidden max-w-md mx-auto">
+            {
+              blok.welcomeImage?.filename && (
+                <Picture
+                  src={blok.welcomeImage.filename}
+                  widths={[680, 800, 1200, 1400, 1800]}
+                  quality={85}
+                  class="w-full h-full object-cover object-center"
+                  sizes="100vw"
+                  alt="Hi! Ich bin Sarah. Freiberufliche Mediendesignerin."
+                  title="Hi! Ich bin Sarah. Freiberufliche Mediendesignerin."
+                  aspectRatio={3 / 2}
+                  position="center"
+                  fit="cover"
+                  background="rgba(0,0,0,0)"
+                />
+              )
+            }
+          </div>
+          <div class="text-primary mb-4 [&>p]:mb-4 [&>p>b]:font-clanMedium max-w-md mx-auto" set:html={renderedDescription} />
         </div>
       </div>
     </div>
