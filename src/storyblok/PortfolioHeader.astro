@@ -5,6 +5,16 @@ import bgImg from '../assets/images/Headerbild_Webdesign.png';
 
 const { blok } = Astro.props;
 const renderedDescription = renderRichText(blok.description);
+
+console.log(blok);
+
+const photoFormats = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'avif', 'tiff', 'bmp', 'ico', 'heic', 'heif'];
+const videoFormats = ['mp4', 'webm', 'ogg', 'mov', 'avi', 'wmv', 'flv', 'mpg', 'mpeg', 'm4v', 'mkv'];
+
+const fileExtension = blok?.backgroundImage?.filename?.split('.')?.pop();
+
+const isPhoto = fileExtension ? photoFormats.includes(fileExtension) : false;
+const isVideo = fileExtension ? videoFormats.includes(fileExtension) : false;
 ---
 
 <Fragment {...storyblokEditable(blok)}>
@@ -24,19 +34,26 @@ const renderedDescription = renderRichText(blok.description);
     {
       blok.backgroundImage?.filename && (
         <div class="absolute inset-0 z-0">
-          <Picture
-            src={blok.backgroundImage?.filename}
-            widths={[680, 900, 1200, 1400, 1800, 2400]}
-            quality={90}
-            sizes="100vw"
-            alt={blok.backgroundImage?.alt}
-            title={blok.backgroundImage?.title}
-            class="object-left object-cover h-full w-full"
-            aspectRatio={16 / 9}
-            position={blok.backgroundImagePosition || 'left'}
-            fit="cover"
-            background="#ffffff"
-          />
+          {isPhoto && (
+            <Picture
+              src={blok.backgroundImage?.filename}
+              widths={[680, 900, 1200, 1400, 1800, 2400]}
+              quality={90}
+              sizes="100vw"
+              alt={blok.backgroundImage?.alt}
+              title={blok.backgroundImage?.title}
+              class="object-left object-cover h-full w-full"
+              aspectRatio={16 / 9}
+              position={blok.backgroundImagePosition || 'left'}
+              fit="cover"
+              background="#ffffff"
+            />
+          )}
+          {isVideo && (
+            <video class="object-left object-cover h-full w-full" autoplay loop muted playsinline>
+              <source src={blok.backgroundImage?.filename} type={`video/${fileExtension}`} />
+            </video>
+          )}
         </div>
       )
     }
