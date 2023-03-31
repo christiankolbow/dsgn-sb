@@ -18,7 +18,7 @@ const isVideo = fileExtension ? videoFormats.includes(fileExtension) : false;
 ---
 
 <Fragment {...storyblokEditable(blok)}>
-  <section class="pb-72 pt-56 relative">
+  <section class="pt-44 pb-28 md:pb-72 md:pt-56 relative">
     <div class="container relative z-10">
       <h1 class="text-4xl sm:text-5xl text-primary mb-2 font-clanMedium">{blok.title}</h1>
       {blok.subtitle && <h2 class="text-2xl text-primary mb-10">{blok.subtitle}</h2>}
@@ -33,7 +33,7 @@ const isVideo = fileExtension ? videoFormats.includes(fileExtension) : false;
     </div>
     {
       blok.backgroundImage?.filename && (
-        <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 z-0 hidden md:block">
           {isPhoto && (
             <Picture
               src={blok.backgroundImage?.filename}

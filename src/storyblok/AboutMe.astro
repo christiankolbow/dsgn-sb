@@ -14,10 +14,27 @@ const renderedDescription = renderRichText(blok.description);
         {
           blok.welcomeImage?.filename && (
             <Picture
-              src={blok.welcomeImage.filename}
+              src={blok.welcomeImage?.filename}
               widths={[680, 800, 1200, 1400, 1800]}
               quality={85}
-              class=" md:-mb-28 w-full h-full md:w-auto md:h-auto object-cover object-center"
+              class=" md:-mb-28 w-full h-full md:w-auto md:h-auto object-cover object-center hidden md:block"
+              sizes="680px"
+              alt="Hi! Ich bin Sarah. Freiberufliche Mediendesignerin."
+              title="Hi! Ich bin Sarah. Freiberufliche Mediendesignerin."
+              aspectRatio={3 / 2}
+              position="center"
+              fit="contain"
+              background="rgba(0,0,0,0)"
+            />
+          )
+        }
+        {
+          blok.welcomeImageMobile?.filename && (
+            <Picture
+              src={blok.welcomeImageMobile?.filename}
+              widths={[680, 800, 1200, 1400, 1800]}
+              quality={85}
+              class=" md:-mb-28 w-full h-full md:w-auto md:h-auto object-cover object-center md:hidden"
               sizes="680px"
               alt="Hi! Ich bin Sarah. Freiberufliche Mediendesignerin."
               title="Hi! Ich bin Sarah. Freiberufliche Mediendesignerin."
