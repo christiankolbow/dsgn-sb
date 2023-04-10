@@ -3,7 +3,6 @@ import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
 import '../styles/global.css';
 import { SEOMetadata } from 'astro-seo-metadata';
-import banner from '../assets/images/banner.png';
 
 interface Props {
   siteName?: string;
@@ -18,7 +17,7 @@ const {
   siteName = 'DSGN.',
   title = 'DSGN. - media and design',
   description = 'Freiberufliche Mediendesignerin',
-  image = banner.src,
+  image = '/banner.png',
   author = 'Sarah Weihrauch',
   copyright = 'Sarah Weihrauch',
 } = Astro.props;
