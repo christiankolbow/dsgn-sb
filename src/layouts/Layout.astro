@@ -3,6 +3,8 @@ import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
 import '../styles/global.css';
 import { SEOMetadata } from 'astro-seo-metadata';
+import banner from '../assets/images/banner.png';
+
 interface Props {
   siteName?: string;
   title?: string;
@@ -16,7 +18,7 @@ const {
   siteName = 'DSGN.',
   title = 'DSGN. - media and design',
   description = 'Freiberufliche Mediendesignerin',
-  image,
+  image = banner.src,
   author = 'Sarah Weihrauch',
   copyright = 'Sarah Weihrauch',
 } = Astro.props;
@@ -39,6 +41,7 @@ const {
       canonicalUrl={Astro.url.toString()}
       type={'website'}
       astroGenerator={true}
+      favicon="/favicon.svg"
     />
   </head>
   <body class="text-default font-clanBook min-h-screen flex flex-col">
